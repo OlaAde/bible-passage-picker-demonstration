@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {BiblePassagePicker} from 'bible-passage-picker'
+import 'bible-passage-picker/dist/index.css'
+import {PassageValueType} from "bible-passage-picker/dist/types";
+
+const App = () => {
+    const [selectedPassage, setSelectedPassage] = useState<PassageValueType>({
+        mode: 'single',
+        single: {book: 'Genesis', chapter: "1", verse: "1"},
+        start: null,
+        end: null
+    });
+
+    return <BiblePassagePicker value={selectedPassage} setValue={setSelectedPassage}/>
 }
 
-export default App;
+export default App
